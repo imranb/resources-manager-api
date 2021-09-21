@@ -7,17 +7,30 @@ use Exception;
 
 class LinkService
 {
+    /**
+     * @var Link
+     */
     protected $model;
 
+    /**
+     * @param Link $link
+     */
     public function __construct(Link $link) {
         $this->model = $link;
     }
 
+    /**
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
     public function getAll() {
 
         return $this->model::query()->paginate();
     }
 
+    /**
+     * @param $request
+     * @return array
+     */
     public function add($request) {
 
         try {
@@ -33,6 +46,11 @@ class LinkService
         }
     }
 
+    /**
+     * @param $request
+     * @param $link
+     * @return array
+     */
     public function edit($request, $link) {
 
         try {
@@ -48,6 +66,10 @@ class LinkService
         }
     }
 
+    /**
+     * @param $link
+     * @return array
+     */
     public function delete($link) {
 
         $link->delete();

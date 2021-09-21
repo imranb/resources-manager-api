@@ -4,22 +4,33 @@ namespace App\Services;
 
 use App\Models\Snippet;
 use Exception;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class SnippetService
 {
+    /**
+     * @var Snippet
+     */
     protected $model;
 
+    /**
+     * @param Snippet $snippet
+     */
     public function __construct(Snippet $snippet) {
         $this->model = $snippet;
     }
 
+    /**
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
     public function getAll() {
 
         return $this->model::query()->paginate();
     }
 
+    /**
+     * @param $request
+     * @return array
+     */
     public function add($request) {
 
         try {
@@ -36,6 +47,11 @@ class SnippetService
         }
     }
 
+    /**
+     * @param $request
+     * @param $snippet
+     * @return array
+     */
     public function edit($request, $snippet) {
 
         try {
@@ -52,6 +68,10 @@ class SnippetService
         }
     }
 
+    /**
+     * @param $snippet
+     * @return array
+     */
     public function delete($snippet) {
 
         $snippet->delete();

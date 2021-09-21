@@ -11,17 +11,30 @@ class PdfService
 {
     use UploadTrait;
 
+    /**
+     * @var Pdf
+     */
     protected $model;
 
+    /**
+     * @param Pdf $pdf
+     */
     public function __construct(Pdf $pdf) {
         $this->model = $pdf;
     }
 
+    /**
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
     public function getAll() {
 
         return $this->model::query()->paginate();
     }
 
+    /**
+     * @param $request
+     * @return array
+     */
     public function add($request) {
 
         try {
@@ -42,6 +55,11 @@ class PdfService
         }
     }
 
+    /**
+     * @param $request
+     * @param $pdf
+     * @return array
+     */
     public function edit($request, $pdf) {
 
         try {
@@ -64,6 +82,10 @@ class PdfService
         }
     }
 
+    /**
+     * @param $pdf
+     * @return array
+     */
     public function delete($pdf) {
 
         DB::transaction(function () use ($pdf) {

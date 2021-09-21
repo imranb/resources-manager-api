@@ -3,10 +3,16 @@
 namespace App\Traits;
 
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
 
 trait UploadTrait {
 
+    /**
+     * Store pdf file
+     * @param UploadedFile $pdf
+     * @param String $path
+     * @param null $oldPdf
+     * @return String
+     */
     public function uploadPdf(UploadedFile $pdf, String $path, $oldPdf = null) : String {
 
         // if a file with the same name exists delete pdf
@@ -38,6 +44,11 @@ trait UploadTrait {
         return $fileNameToStore;
     }
 
+    /**
+     * Remove pdf from storage
+     * @param $path
+     * @param $pdf
+     */
     public function deletePdfFromStorage($path, $pdf) {
 
         if (is_file(storage_path('app/public/files/'.$path.'/'.$pdf))) {

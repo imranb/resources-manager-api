@@ -16,27 +16,51 @@ class LinksController extends Controller
      */
     private $linkService;
 
+    /**
+     * @param LinkService $linkService
+     */
     public function __construct(LinkService $linkService) {
         $this->linkService = $linkService;
     }
 
+    /**
+     * List all the links
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function index() {
 
-        return response()->json($this->linkService->getAll());
+        $links = $this->linkService->getAll();
+        return response()->json($links);
     }
 
+    /**
+     * Create a new link
+     * @param CreateLinkRequest $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function store(CreateLinkRequest $request) {
 
         $createdLink = $this->linkService->add($request);
         return response()->json($createdLink);
     }
 
+    /**
+     * Update an existing link
+     * @param CreateLinkRequest $request
+     * @param Link $link
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function update(CreateLinkRequest $request, Link $link) {
 
         $updatedLink = $this->linkService->edit($request, $link);
         return response()->json($updatedLink);
     }
 
+    /**
+     * Remove a link
+     * @param Link $link
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function destroy(Link $link) {
 
         $deletedLink = $this->linkService->delete($link);
