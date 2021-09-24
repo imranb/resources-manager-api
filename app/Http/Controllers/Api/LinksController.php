@@ -34,6 +34,16 @@ class LinksController extends Controller
     }
 
     /**
+     * Show a single link
+     * @param Link $link
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function show(Link $link) {
+
+        return response()->json($link);
+    }
+
+    /**
      * Create a new link
      * @param CreateLinkRequest $request
      * @return \Illuminate\Http\JsonResponse

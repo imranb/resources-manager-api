@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('pdfs')->name('pdf.')->group(function () {
     Route::get('/',                     [PdfsController::class, 'index'])->name('index');
+    Route::get('{pdf}/show',            [PdfsController::class, 'show'])->name('show');
     Route::post('store',                [PdfsController::class, 'store'])->name('store');
     Route::post('{pdf}/update',         [PdfsController::class, 'update'])->name('update');
     Route::delete('{pdf}/delete',       [PdfsController::class, 'destroy'])->name('destroy');
@@ -30,6 +31,7 @@ Route::prefix('pdfs')->name('pdf.')->group(function () {
 
 Route::prefix('snippets')->name('snippets.')->group(function () {
     Route::get('/',                     [SnippetsController::class, 'index'])->name('index');
+    Route::get('{snippet}/show',        [SnippetsController::class, 'show'])->name('show');
     Route::post('store',                [SnippetsController::class, 'store'])->name('store');
     Route::patch('{snippet}/update',    [SnippetsController::class, 'update'])->name('update');
     Route::delete('{snippet}/delete',   [SnippetsController::class, 'destroy'])->name('destroy');
@@ -37,6 +39,7 @@ Route::prefix('snippets')->name('snippets.')->group(function () {
 
 Route::prefix('links')->name('links.')->group(function () {
     Route::get('/',                     [LinksController::class, 'index'])->name('index');
+    Route::patch('{link}/show',         [LinksController::class, 'show'])->name('show');
     Route::post('store',                [LinksController::class, 'store'])->name('store');
     Route::patch('{link}/update',       [LinksController::class, 'update'])->name('update');
     Route::delete('{link}/delete',      [LinksController::class, 'destroy'])->name('destroy');

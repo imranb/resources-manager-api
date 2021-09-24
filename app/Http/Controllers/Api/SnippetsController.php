@@ -33,6 +33,16 @@ class SnippetsController extends Controller
     }
 
     /**
+     * Show a single snippet
+     * @param Snippet $snippet
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function show(Snippet $snippet) {
+
+        return response()->json($snippet);
+    }
+
+    /**
      * Create a new snippet
      * @param CreateSnippetRequest $request
      * @return \Illuminate\Http\JsonResponse

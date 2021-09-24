@@ -35,8 +35,9 @@ class LinkService
 
         try {
             $this->model::create([
-                'title' => $request->title,
-                'url'   => $request->url
+                'title'         => $request->title,
+                'url'           => $request->url,
+                'open_in_tab'   => $request->open_in_tab
             ]);
 
             return ['success' => true, 'message' => 'Link successfully created'];
@@ -55,8 +56,9 @@ class LinkService
 
         try {
             $link->update([
-                'title' => $request->title,
-                'url'   => $request->url
+                'title'         => $request->title,
+                'url'           => $request->url,
+                'open_in_tab'   => $request->open_in_tab
             ]);
 
             return ['success' => true, 'message' => 'Link successfully updated'];

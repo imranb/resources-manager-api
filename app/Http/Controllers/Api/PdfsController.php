@@ -34,6 +34,16 @@ class PdfsController extends Controller
     }
 
     /**
+     * Show a single pdf
+     * @param Pdf $pdf
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function show(Pdf $pdf) {
+
+        return response()->json($pdf);
+    }
+
+    /**
      * Create a new pdf
      * @param CreatePdfRequest $request
      * @return \Illuminate\Http\JsonResponse
